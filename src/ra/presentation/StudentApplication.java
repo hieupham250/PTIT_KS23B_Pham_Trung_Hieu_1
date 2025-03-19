@@ -41,9 +41,7 @@ public class StudentApplication {
                     StudentBusiness.studentDelete(students, studentDeleteId);
                     break;
                 case 5:
-                    System.out.print("Nhập tên sinh viên cần tim: ");
-                    String findStudentName = sc.nextLine();
-                    StudentBusiness.findStudent(students, findStudentName);
+                    StudentBusiness.findStudent(students);
                     break;
                 case 6:
                     break;

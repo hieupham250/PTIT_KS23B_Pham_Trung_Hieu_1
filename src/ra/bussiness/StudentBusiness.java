@@ -14,7 +14,6 @@ public class StudentBusiness {
             System.out.println("Danh sách trống!");
             return;
         }
-        System.out.println(countStudent);
         for (int i = 0; i < countStudent; i++) {
             students[i].displayData();
         }
@@ -31,8 +30,10 @@ public class StudentBusiness {
     }
 
     public static void studentUpdate(Student[] students, String studentUpdateId) {
+        boolean flag = false;
         for (int i = 0; i < countStudent; i++) {
             if (students[i].getStudentId().equals(studentUpdateId)) {
+                flag = true;
                 students[i].displayData();
                 System.out.println("------------MENU chỉnh sửa-----------");
                 System.out.println("1. Tên sinh viên");
@@ -101,6 +102,9 @@ public class StudentBusiness {
                 }
             }
         }
+        if(!flag) {
+            System.out.println("Không tìm thấy sinh viên");
+        }
     }
 
     public static void studentDelete(Student[] students, String studentDeleteId) {
@@ -114,19 +118,22 @@ public class StudentBusiness {
             }
         }
         if (!checkStudent) {
-            System.out.println("Không tìm thấy mã sinh viên cần xóa!");
+            System.out.println("Không tìm thấy sinh viên");
         }
     }
 
-    public static void findStudent(Student[] students, String findStudentName) {
+    public static void findStudent(Student[] students) {
         boolean checkStudent = false;
         System.out.println("---------Lựa chọn tìm kiếm-------------");
         System.out.println("1. Theo tên");
         System.out.println("2. Theo lớp học");
         System.out.println("3. Theo điểm tích lũy");
         int choice = sc.nextInt();
+        sc.nextLine();
         switch (choice) {
             case 1:
+                System.out.print("Nhập tên sinh cần tìm: ");
+                String findStudentName = sc.nextLine();
                 for (int i = 0; i < countStudent; i++) {
                     if (students[i].getStudentName().equals(findStudentName)) {
                         students[i].displayData();
@@ -134,13 +141,28 @@ public class StudentBusiness {
                     }
                 }
                 if (!checkStudent) {
-                    System.out.println("Không tìm sinh viên");
+                    System.out.println("Không tìm thấy kết quả phù hợp");
                 }
                 break;
             case 2:
+                System.out.print("Nhập tên lớp cần tìm: ");
+                String findClassName = sc.nextLine();
+                for (int i = 0; i < countStudent; i++) {
+                    if (students[i].getClassName().equals(findClassName)) {
+                        students[i].displayData();
+                        checkStudent = true;
+                    }
+                }
+                if (!checkStudent) {
+                    System.out.println("Không tìm thấy kết quả phù hợp");
+                }
                 break;
             case 3:
                 break;
+            case 4:
+                return;
+            default:
+                System.out.println("Lựa chọn không hợp lệ!");
         }
 
     }

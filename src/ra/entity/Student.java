@@ -140,7 +140,7 @@ public class Student implements IApp {
         System.out.println("Tên sinh viên: " + studentName);
         System.out.println("Ngày sinh: " + birthday);
         System.out.println("Số điện thoại: " + phoneNumber);
-        System.out.println("Giới tính: " + sex);
+        System.out.println("Giới tính: " + (sex ? "Nam" : "Nữ"));
         System.out.println("Email: " + email);
         System.out.println("Ngành học: " + major);
         System.out.println("Tên lớp học: " + className);
